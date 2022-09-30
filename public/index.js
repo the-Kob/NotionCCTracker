@@ -1,16 +1,14 @@
-const getDataFromBackend = async () => {
+const getSets = async () => {
   const rest = await fetch("http://localhost:8080/sets");
-  const data = await rest.json();
+  const sets = await rest.json();
   
-  return data;
+  return sets;
 };
   
-const res = await getDataFromBackend();
+const addSets = async () => {
+  const sets = await getSets();
 
-const addData = async () => {
-  const data = await getDataFromBackend();
-
-  data.forEach((value) => {
+  sets.forEach((value) => {
     const div = document.createElement("div");
     div.classList.add("userContainer");
     div.innerHTML = `
@@ -22,4 +20,4 @@ const addData = async () => {
   });
 };
 
-addData();
+addSets();

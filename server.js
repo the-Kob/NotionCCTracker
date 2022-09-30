@@ -1,6 +1,6 @@
 const express = require("express");
-const moduleToFetch = require("./client");
-const getDatabase = moduleToFetch.getDatabase;
+const moduleToFetch = require("./notionclient");
+const getMainDatabase = moduleToFetch.getMainDatabase;
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(
 );
 
 app.get("/sets", async (req, res) => {
-    const sets = await getDatabase();
+    const sets = await getMainDatabase();
     res.json(sets);
 });
 
